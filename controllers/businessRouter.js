@@ -42,10 +42,4 @@ businessRouter.post('/',(req,res)=>{
   res.json(business)
 })
 
-businessRouter.delete('/:id',async(req,res)=>{
-  const id = req.params.id
-  businessData.businessData = businessData.businessData.filter(business => business.id !== id)
-  res.sendStatus(204).end()
-})
-
 module.exports = businessRouter

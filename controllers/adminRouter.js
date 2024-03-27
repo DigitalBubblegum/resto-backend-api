@@ -22,7 +22,7 @@ adminRouter.get('/business/:id',(req,res)=>{
   }
 })
 
-adminRouter.post('/',(req,res)=>{
+adminRouter.post('/business/',(req,res)=>{
   const body = req.body
   console.log(body)
   if (!body.nameOfBusiness ||!body.phone ||!body.city ||!body.address || !body.images) {
@@ -42,7 +42,7 @@ adminRouter.post('/',(req,res)=>{
   res.json(business)
 })
 
-adminRouter.delete('/:id',async(req,res)=>{
+adminRouter.delete('/business/:id',async(req,res)=>{
   const id = req.params.id
   businessData.businessData = businessData.businessData.filter(business => business.id !== id)
   res.sendStatus(204).end()
