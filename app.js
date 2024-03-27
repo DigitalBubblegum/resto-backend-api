@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const userRouter = require('./controllers/userRouter')
+const businessRouter = require('./controllers/businessRouter')
 const logger = require('./utils/logger')
 
 app.use(cors())
@@ -11,4 +12,5 @@ app.get('/',(_req,res)=>{
     res.send('<h1>hello</h1>')
 })
 app.use('/api/user',userRouter)
+app.use('/api/business',businessRouter)
 module.exports = app
