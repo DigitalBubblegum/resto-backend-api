@@ -4,6 +4,7 @@ const app = express()
 const cors = require('cors')
 const userRouter = require('./controllers/userRouter')
 const businessRouter = require('./controllers/businessRouter')
+const adminRouter = require('./controllers/adminRouter')
 const logger = require('./utils/logger')
 
 app.use(cors())
@@ -13,4 +14,5 @@ app.get('/',(_req,res)=>{
 })
 app.use('/api/user',userRouter)
 app.use('/api/business',businessRouter)
+app.use('/api/admin',adminRouter)
 module.exports = app
