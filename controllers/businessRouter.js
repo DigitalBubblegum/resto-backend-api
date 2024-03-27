@@ -42,4 +42,20 @@ businessRouter.post('/',(req,res)=>{
   res.json(business)
 })
 
+businessRouter.put('/:id',(req,res) =>{
+  const body = req.body
+  const business = {
+    'id':Number(req.params.id),
+    'nameOfBusiness':body.nameOfBusiness,
+    'phone':body.phone,
+    'city':body.city,
+    'address':body.address,
+    'images': body.images,
+    'reviews': body.reviews
+  }
+  businessData.businessData = businessData.businessData.filter(business => Number(business.id) !== Number(req.params.id))
+  businessData.businessData = [...businessData.businessData,business]
+  res.sendStatus(202)
+})
+
 module.exports = businessRouter
