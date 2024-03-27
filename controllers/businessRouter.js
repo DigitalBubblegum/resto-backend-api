@@ -8,6 +8,17 @@ const generateId = () => {
   return maxId + 1
 }
 
+businessRouter.get('/reviews/',(_req,res)=>{
+  let reviews = []
+  businessData.businessData.map((business)=>{
+    reviews.push({
+      id: business.id,
+      reviews: business.reviews,
+    })
+  })
+  res.status(200).json(reviews)
+})
+
 businessRouter.get('/',async (_req,res) => {
   res.status(200).json(businessData.businessData)
 })
@@ -18,7 +29,7 @@ businessRouter.get('/:id',(req,res)=>{
   if(business){
     res.status(200).json(business)
   }else{
-    res.status(400).end()
+    res.status(400).json({error:'not found'}).end()
   }
 })
 
