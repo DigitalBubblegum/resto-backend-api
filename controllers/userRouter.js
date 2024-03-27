@@ -1,9 +1,19 @@
-const userData = require('../data/userData')
-
 const userRouter = require('express').Router()
+const businessData = require('../data/businessData')
 
-userRouter.get('/',async (_req,res) => {
-  res.json(userData)
+userRouter.get('/business/',(_req,res) => {
+  res.status(200).json(businessData.businessData)
+})
+
+userRouter.get('/business/:id',(req,res)=>{
+  const id = Number(req.params.id)
+  const business =  businessData.businessData.find( i => Number(i.id) === id)
+  console.log(business)
+  if(business){
+    res.status(200).json(business)
+  }else{
+    res.status(400).end()
+  }
 })
 
 module.exports = userRouter

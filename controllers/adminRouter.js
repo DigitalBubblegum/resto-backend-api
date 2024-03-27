@@ -1,5 +1,5 @@
-const businessData = require('../data/businessData')
 const adminRouter = require('express').Router()
+const businessData = require('../data/businessData')
 
 const generateId = () => {
   const maxId = businessData.businessData.length > 0
@@ -13,8 +13,9 @@ adminRouter.get('/business/',(_req,res) => {
 })
 
 adminRouter.get('/business/:id',(req,res)=>{
-  const id = req.params.id
-  const business =  businessData.businessData.find( i => i.id === id)
+  const id = Number(req.params.id)
+  const business =  businessData.businessData.find( i => Number(i.id) === id)
+  console.log(business)
   if(business){
     res.status(200).json(business)
   }else{
@@ -43,8 +44,8 @@ adminRouter.post('/business/',(req,res)=>{
 })
 
 adminRouter.delete('/business/:id',async(req,res)=>{
-  const id = req.params.id
-  businessData.businessData = businessData.businessData.filter(business => business.id !== id)
+  const id = Number(req.params.id)
+  businessData.businessData = businessData.businessData.filter(business => Number(business.id) !== id)
   res.sendStatus(204).end()
 })
 
