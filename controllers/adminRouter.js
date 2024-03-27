@@ -71,7 +71,6 @@ adminRouter.get('/reviews',(_req,res)=>{
       reviews: business.reviews,
     })
   })
-  // console.log(reviews)
   res.status(200).json(reviews)
 })
 module.exports = adminRouter
