@@ -74,6 +74,21 @@ adminRouter.get('/reviews',(_req,res)=>{
   res.status(200).json(reviews)
 })
 
+adminRouter.post('/reviews/:id',(req,res)=>{
+  const id = Number(req.params.id)
+  const user_rating = req.body.user_rating
+  const user_id = req.body.user_id
+  const business = businessData.businessData.find(i => Number(i.id)===id)
+  business.reviews.push({
+    user_id: user_id,
+    user_rating: user_rating,
+    business_comment: ''
+  })
+  businessData.businessData = businessData.businessData.filter(business => Number(business.id) !== id)
+  businessData.businessData = [...businessData.businessData,business]
+  res.sendStatus(202)
+})
+
 adminRouter.delete('/reviews/:id',(req,res)=>{
   const id = Number(req.params.id)
   const remove = Number(req.body.review_id)
