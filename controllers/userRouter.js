@@ -1,12 +1,9 @@
+const userData = require('../data/userData')
+
 const userRouter = require('express').Router()
-let data = [
-  {
-    name: 'test',
-    information: 'information',
-  },
-]
+
 userRouter.get('/',async (_req,res) => {
-  res.json(data)
+  res.json(userData)
 })
 
 module.exports = userRouter
