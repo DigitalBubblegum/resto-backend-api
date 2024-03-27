@@ -13,8 +13,8 @@ businessRouter.get('/',async (_req,res) => {
 })
 
 businessRouter.get('/:id',(req,res)=>{
-  const id = req.params.id
-  const business =  businessData.businessData.find( i => i.id === id)
+  const id = Number(req.params.id)
+  const business =  businessData.businessData.find( i => Number(i.id) === id)
   if(business){
     res.status(200).json(business)
   }else{

@@ -63,6 +63,15 @@ adminRouter.put('/business/:id',(req,res) =>{
   res.sendStatus(202)
 })
 
-
-
+adminRouter.get('/reviews',(_req,res)=>{
+  let reviews = []
+  businessData.businessData.map((business)=>{
+    reviews.push({
+      id: business.id,
+      reviews: business.reviews,
+    })
+  })
+  // console.log(reviews)
+  res.status(200).json(reviews)
+})
 module.exports = adminRouter
