@@ -1,11 +1,6 @@
-require('dotenv').config()
-const express = require('express')
-const app = express()
-app.get('/',(req,res)=>{
-    res.send('<h1>hello world</h1>')
-})
-
-const PORT = process.env.PORT
-app.listen(PORT,()=>{
-    console.log(`server is up and running`)
+const app = require('./app')
+const config = require('./utils/config')
+const logger = require('./utils/logger')
+app.listen(config.PORT,()=>{
+    logger.info(`server is up and running on port ${config.PORT}`)
 })
